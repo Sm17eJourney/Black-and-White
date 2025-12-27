@@ -3,12 +3,14 @@ body{
     font-family:'Noto Sans';
     font-weight: 300;
 }
+
+#navbarSupportedContent{
+    justify-content: space-between;
+}
+
 .navbar-brand img{
     max-height: 60px;
     height: 100%;
-}
-#navbarSupportedContent{
-    justify-content: space-between;
 }
 
 .main{
@@ -19,6 +21,12 @@ body{
     display: flex;
     justify-self: center;
 }
+video {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
 @media screen and (min-width: 992px) {
     .Outer {
         margin: 0 32px;
@@ -179,5 +187,4 @@ i{
       max-width: 100% !important;
     }
   }
-
  */
