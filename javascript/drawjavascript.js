@@ -63,6 +63,3 @@ $("#pageFld").on("change", function () {
 
   swiper.slideTo(page - 1);
 });
-document.addEventListener('DOMContentLoaded', () => {
-    initSwiper(); 
-});
