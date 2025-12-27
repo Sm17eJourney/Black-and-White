@@ -132,6 +132,10 @@ i{
     max-height: 600px;
 }
 
+.content{
+    text-align: justify;
+}
+
 @media screen and (max-width: 576px){
     .main{
         margin-top: 70px;
