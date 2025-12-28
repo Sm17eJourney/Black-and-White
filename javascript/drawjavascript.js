@@ -42,7 +42,7 @@ document.getElementById('nextBtn').onclick = () => {
     swiper.slideNext();
 };
 
-
+/* 
 $("#pageFld").val(swiper.realIndex + 1);
 $("#pageFld").attr("max", swiper.slides.length);
 
@@ -73,3 +73,4 @@ $("#pageFld").on("change", function () {
     swiper.slideTo(page - 1, 700, false);
     setTimeout(() => { isSliding = false }, 800);
 });
+ */
