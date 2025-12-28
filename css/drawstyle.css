@@ -1,5 +1,8 @@
+html{
+    background: linear-gradient(133deg, rgb(0 0 0) 51%, rgb(66 65 65) 100%);
+}
 body{
-    background-color: black;
+    background: linear-gradient(133deg, rgb(0 0 0) 51%, rgb(66 65 65) 100%);
     font-family:'Noto Sans';
     font-weight: 300;
 }
@@ -82,11 +85,26 @@ video {
     color: #FFF;
 }
 input{
+    color: #FFF;
     border-radius: 99em;
     height: 50px;
     padding: 0;
     line-height: 50px;
+    background: linear-gradient(-75deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    box-shadow: inset 0 0.125em 0.125em 0.125em rgba(0, 0, 0, 0.05), inset 0 -0.125em 0.25em 0em rgb(255 255 255 / 64%), 0 0.25em 0.5em 0em rgb(0 0 0 / 0.2), inset 0 0 0.5em 0.25em rgb(255 255 255 / 20%);
 }
+.btns{
+    border-radius: 99em;
+    width: fit-content;
+    padding: 0 16px;
+    background: linear-gradient(-75deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    box-shadow: inset 0 0.125em 0.125em 0.125em rgba(0, 0, 0, 0.05), inset 0 -0.125em 0.25em 0em rgb(255 255 255 / 64%), 0 0.25em 0.5em 0em rgb(0 0 0 / 0.2), inset 0 0 0.5em 0.25em rgb(255 255 255 / 20%);
+    transition: .2s ease-in-out;
+}
+.btns:hover{
+    transform: translateY(-5px);
+}
+
 button{
     background: none;
     border: none;
@@ -113,7 +131,7 @@ i{
     background: #fff;
     padding: 24px;
     box-shadow: 0 10px 30px rgba(0,0,0,.3);
-    overflow-y: auto;
+    overflow-y: auto !important;
 }
 
 .page * {
