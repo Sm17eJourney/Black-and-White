@@ -1,8 +1,6 @@
-/* document.addEventListener('DOMContentLoaded', () => {
-    initSwiper(); 
-}); */
+
 document.addEventListener('DOMContentLoaded', () => {
-    const isMobile = window.innerWidth < 991;
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
     const swiper = new Swiper('.book-swiper', {
         slidesPerView: 1,
@@ -13,17 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
         observeParents: true,
         
 
-        effect: isMobile ? 'slide' : 'creative',
-        creativeEffect: {
+        effect: isTouchDevice ? 'slide' : 'creative',
+        creativeEffect: isTouchDevice ? undefined : {
             prev: {
-            translate: ['-100%', 0, -300],
-            rotate: [0, 0, -15],
-            shadow: true,
+                translate: ['-100%', 0, -300],
+                rotate: [0, 0, -15],
+                shadow: true,
             },
             next: {
-            translate: ['100%', 0, -300],
-            rotate: [0, 0, 15],
-            shadow: true,
+                translate: ['100%', 0, -300],
+                rotate: [0, 0, 15],
+                shadow: true,
             },
         },
 
@@ -32,7 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
             prevEl: '.swiper-button-prev',
         },
     });
-
+    
+    function setSwiperHeight() {
+        if (window.matchMedia('(pointer: coarse)').matches) {
+            document.querySelector('.book-swiper').style.height =
+                window.innerHeight + 'px';
+        }
+    }
+    
+    setSwiperHeight();
+    window.addEventListener('orientationchange', setSwiperHeight);
 
 
 
