@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 1,
         speed: 700,
         grabCursor: true,
+        watchOverflow: true,
+        observer: true,
+        observeParents: true,
         
 
         effect: isMobile ? 'slide' : 'creative',
