@@ -1,10 +1,14 @@
 const isMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
+let isSliding = false;
+let inputTimeout;
+
 const swiper = new Swiper('.book-swiper', {
     slidesPerView: 1,
     speed: 700,
     grabCursor: true,
     effect: isMobile ? 'slide' : 'creative',
+    allowTouchMove: true, // 手指滑動
     creativeEffect: {
         prev: {
             translate: ['-100%', 0, -300],
@@ -23,46 +27,34 @@ const swiper = new Swiper('.book-swiper', {
     },
 });
 
-let isSliding = false;
-let ignoreInput = false; // 新增鎖定 flag
-
 // 統一跳頁函數
 function slideToPage(index) {
     if (isSliding) return;
     isSliding = true;
-    ignoreInput = true; // 避免 input 被觸發
     swiper.slideTo(index, 700, false);
-    setTimeout(() => {
-        isSliding = false;
-        ignoreInput = false;
-    }, 750);
 }
 
-// 同步 input 與 Swiper 當前頁
-swiper.on("slideChange", function () {
-    if (ignoreInput) return; // 防止 slideChange 觸發 input 再跳一次
+// Swiper 事件監聽，動畫結束解鎖
+swiper.on('transitionEnd', () => {
+    isSliding = false;
     $("#pageFld").val(swiper.realIndex + 1);
 });
 
 // 按鈕事件
 document.getElementById('firstBtn').onclick = () => slideToPage(0);
 document.getElementById('lastBtn').onclick = () => slideToPage(swiper.slides.length - 1);
-document.getElementById('prevBtn').onclick = () => swiper.slidePrev();
-document.getElementById('nextBtn').onclick = () => swiper.slideNext();
+document.getElementById('prevBtn').onclick = () => slideToPage(swiper.realIndex - 1);
+document.getElementById('nextBtn').onclick = () => slideToPage(swiper.realIndex + 1);
 
-// input 手動跳頁（改用 debounce 防止重複觸發）
-let inputTimeout;
+// input 手動跳頁（debounce）
 $("#pageFld").on("input", function () {
-    if (ignoreInput || isSliding) return;
-
     clearTimeout(inputTimeout);
     inputTimeout = setTimeout(() => {
         let page = parseInt($(this).val(), 10);
         if (isNaN(page)) return;
-
         page = Math.max(1, Math.min(page, swiper.slides.length));
         slideToPage(page - 1);
-    }, 200); // 延遲 200ms 避免連續觸發
+    }, 150); // 延遲 150ms
 });
 
 // 初始化 input 最大值與預設值
