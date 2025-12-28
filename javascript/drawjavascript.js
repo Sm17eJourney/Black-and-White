@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     const swiper = new Swiper('.book-swiper', {
         slidesPerView: 1,
@@ -30,22 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
             prevEl: '.swiper-button-prev',
         },
     });
-    
+
     function setSwiperHeight() {
-        if (window.matchMedia('(pointer: coarse)').matches) {
-            document.querySelector('.book-swiper').style.height =
-                window.innerHeight + 'px';
+        if (isTouchDevice) {
+            const swiperEl = document.querySelector('.book-swiper');
+            if (swiperEl) swiperEl.style.height = window.innerHeight + 'px';
         }
     }
     
-    setSwiperHeight();
+    window.addEventListener('resize', setSwiperHeight);
     window.addEventListener('orientationchange', setSwiperHeight);
-
-
-
+    setSwiperHeight();
     document.getElementById('firstBtn').onclick = () => {
         swiper.slideTo(0);
     };
+
+    
 
     document.getElementById('lastBtn').onclick = () => {
         swiper.slideTo(swiper.slides.length - 1);
