@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    function setSwiperHeight() {
+    /* function setSwiperHeight() {
         if (isTouchDevice) {
             const swiperEl = document.querySelector('.book-swiper');
             if (swiperEl) swiperEl.style.height = window.innerHeight + 'px';
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('firstBtn').onclick = () => {
         swiper.slideTo(0);
     };
+ */
 
-    
 
     document.getElementById('lastBtn').onclick = () => {
         swiper.slideTo(swiper.slides.length - 1);
