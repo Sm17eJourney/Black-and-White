@@ -1,4 +1,4 @@
-const isMobile = window.innerWidth < 768;
+const isMobile = window.innerWidth < 991;
 
 const swiper = new Swiper('.book-swiper', {
     slidesPerView: 1,
