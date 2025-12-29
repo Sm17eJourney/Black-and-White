@@ -27,8 +27,6 @@ const swiper = new Swiper('.book-swiper', {
 });
 
 
-
-
 document.getElementById('firstBtn').onclick = () => {
     swiper.slideTo(0);
 };
