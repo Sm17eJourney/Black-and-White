@@ -1,5 +1,5 @@
 body{
-    height: 100vh;
+    height: 120vh;
     background: linear-gradient(133deg,rgb(66 65 65) 0%, rgb(0 0 0) 51%, rgb(66 65 65) 100%);
     font-family:'Noto Sans';
     font-weight: 300;
@@ -220,5 +220,6 @@ i{
     }
   }
  */
+
 
 
